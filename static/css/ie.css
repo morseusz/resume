@@ -1,0 +1,23 @@
+#top-bar-content #cv {
+	display:block;
+	position:absolute;
+}
+
+#top-bar-content #name {
+	float:left;
+	margin-left:150px;
+}
+.skill-container .skill-strenght {
+	width:420px;
+}
+.img-porfolio span {	
+    background-color:#fff;
+	behavior: url(PIE.htc);
+	height:0;
+	padding-top:0;
+}
+.img-porfolio:hover span {
+	height:90px;
+	padding-top:72px;
+	behavior: url(PIE.htc);
+}
