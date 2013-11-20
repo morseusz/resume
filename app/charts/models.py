@@ -8,5 +8,5 @@ class GoldPriceManager(models.Manager):
 
 class GoldPrice(models.Model):
     date = models.DateField(primary_key=True)
-    average_price = models.DecimalField(max_digits=5, decimal_places=2)
+    average_price = models.DecimalField(max_digits=7, decimal_places=2)
     objects = GoldPriceManager()
