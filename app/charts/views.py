@@ -16,7 +16,7 @@ def display_moving_average(request, alias):
     ma = ma.split(',') if ',' in ma else ma
 
     data = model.objects.get_date_range(start, end)
-    canvas = lib.plot.time.moving_average(data, *ma)
+    canvas = lib.plot.time.moving_average(data, *ma, asset_name=alias)
 
     response=HttpResponse(content_type='image/png')
     canvas.print_png(response)
