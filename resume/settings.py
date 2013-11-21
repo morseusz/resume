@@ -22,6 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'oe3!3z6wy%wq+z^lh%sjfqbm@0a7a9br=#wd31$jb^*4@l(c+%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+print os.environ.get('DJANGO_DEBUG', '')
 DEBUG = bool(os.environ.get('DJANGO_DEBUG', ''))
 TEMPLATE_DEBUG = DEBUG
 
@@ -71,8 +72,7 @@ if DEBUG:
 else:
     #Uncomment for heroku deployment
     # Parse database configuration from $DATABASE_URL
-    DATABASES = {'default':
-                     dj_database_url.config(default='postgres://localhost')}
+    DATABASES= {'default': dj_database_url.config()}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
