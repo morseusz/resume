@@ -9,4 +9,11 @@ class PriceManager(models.Manager):
 class GoldPrice(models.Model):
     date = models.DateField(primary_key=True)
     average_price = models.DecimalField(max_digits=7, decimal_places=2)
-    objects = GoldPriceManager()
+    objects = PriceManager()
+
+
+def get_model(name):
+    for price in filter(lambda e: e[-5:] == 'Price', globals()):
+        if name == price[:-5].lower():
+            return globals()['GoldPrice']
+    return None
