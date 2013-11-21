@@ -1,20 +1,21 @@
-{% load staticfiles %}
-<!doctype html>
-<!--[if lt IE 9]>
-<script src="{% static "js/html5shiv.js" %}"></script>
-<![endif]-->
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 	<title>Piotr Nowakowski - RESUME</title>
 	<meta name="description" content="Hope this works">
 	<meta name="author" content="Piotr Nowakowski">
 
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-	<!-- CSS: implied media=all -->
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow|Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+    {% load static %}
+    <link rel="stylesheet" href="{%  static "css/normalize.css" %}">
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
 	<link rel="stylesheet" href="{% static "css/style.css" %}" media="screen" type="text/css" />
 	<!--[if gte IE 8]><link rel="stylesheet" href="./css/ie.css" media="screen" type="text/css" /><![endif]-->
 	<link rel="stylesheet" href="{% static "css/facebox.css" %}" media="screen" type="text/css" />
@@ -27,6 +28,7 @@
 	<script src="{% static "js/jquery.poshytip.min.js" %}"></script>
 	<script src="{% static "js/jquery.validate.min.js" %}"></script>
 	<script src="{% static "js/script.js" %}"></script>
+
 </head>
 <body>
 	<div id="main">
@@ -270,6 +272,8 @@
 							<span class="sub-title">See my latest work</span>
 						</div>
 						<div class="content">
+                            <p><a href="https://github.com/morseusz/resume" target="_blank">GitHub</a></p>
+                            <img src="/charts/moving_average/gold?start=1995-01-01&end=2012-01-01&ma=50,200"></img>
 						</div>
 					</div>
 				</div>
