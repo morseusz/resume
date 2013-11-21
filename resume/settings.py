@@ -13,18 +13,20 @@ import os
 import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-
+PRODUCTION = not ('False' == os.environ.get('DJANGO_PRODUCTION', 'True'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'oe3!3z6wy%wq+z^lh%sjfqbm@0a7a9br=#wd31$jb^*4@l(c+%'
+if PRODUCTION:
+    SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '')
+else:
+    SECRET_KEY = 'oe3!3z6wy%wq+z^lh%sjfqbm@0a7a9br=#wd31$jb^*4@l(c+%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-print os.environ.get('DJANGO_DEBUG', '')
-DEBUG = bool(os.environ.get('DJANGO_DEBUG', ''))
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG = not PRODUCTION
+DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = []
 
@@ -58,7 +60,7 @@ WSGI_APPLICATION = 'resume.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-if DEBUG:
+if not PRODUCTION:
     DATABASES = {
         'default': {
             'ENGINE':'django.db.backends.postgresql_psycopg2',
