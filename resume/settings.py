@@ -22,9 +22,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'oe3!3z6wy%wq+z^lh%sjfqbm@0a7a9br=#wd31$jb^*4@l(c+%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-TEMPLATE_DEBUG = True
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', ''))
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -58,20 +57,22 @@ WSGI_APPLICATION = 'resume.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE':'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_resume',
-        'USER': 'django_resume',
-        'PASSWORD': 'django_resume',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE':'django.db.backends.postgresql_psycopg2',
+            'NAME': 'django_resume',
+            'USER': 'django_resume',
+            'PASSWORD': 'django_resume',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
     }
-}
-
-#Uncomment for heroku deployment
-# Parse database configuration from $DATABASE_URL
-#DATABASES['default'] =  dj_database_url.config()
+else:
+    #Uncomment for heroku deployment
+    # Parse database configuration from $DATABASE_URL
+    DATABASES = {'default':
+                     dj_database_url.config(default='postgres://localhost')}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
