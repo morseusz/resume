@@ -13,7 +13,14 @@ class GoldPrice(models.Model):
 
 
 def get_model(name):
+    """ Returns a class object, defined in this module, based on name
+    argument.
+
+    >>get_model('gold')
+    >><class 'GoldPrice'>
+
+    """
     for price in filter(lambda e: e[-5:] == 'Price', globals()):
         if name == price[:-5].lower():
-            return globals()['GoldPrice']
+            return globals()[price]
     return None

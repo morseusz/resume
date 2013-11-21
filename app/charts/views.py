@@ -6,6 +6,12 @@ import lib.plot.time
 
 
 def display_moving_average(request, alias):
+    """Draws the price of the given asset as well as computed MA series
+    on a single plot and returns it as an image.
+
+    alias - name of the asset e.g. 'gold'
+
+    """
     #TODO: handle invalid requests types & missing args
     model = get_model(alias)
     start = request.GET.get('start')

@@ -1,4 +1,10 @@
 def moving_average(data, window_size):
+    """Computes moving average for the given sample series.
+
+    data - tuple of samples e.g. ((datetime(2012, 1, 1), 990.99), (..))
+    window_size -length of the window used to compute average
+
+    """
     if window_size >= len(data):
         return []
 
