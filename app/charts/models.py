@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class GoldPriceManager(models.Manager):
+class PriceManager(models.Manager):
     def get_date_range(self, start_date, end_date):
         return self.filter(date__range=(start_date, end_date))
 
