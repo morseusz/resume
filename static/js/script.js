@@ -52,7 +52,7 @@ function updatePlot(form){
 
 $(function() {
    $(".datepicker").datepicker({
-       maxDate: new Date(2013, 10, 30),
+       maxDate: new Date(2013, 9, 31),
    });
 });
 
