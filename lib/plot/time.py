@@ -1,5 +1,6 @@
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 import matplotlib.pyplot as plt
+import numpy
 import lib.statistics.average
 
 
@@ -14,7 +15,7 @@ def get_canvas(series, title=''):
     title - title of the whole plot
 
     """
-    top = plt.subplot2grid((4,4), (0, 0), rowspan=3, colspan=4)
+    top = plt.subplot2grid((4,4), (0, 0), rowspan=4, colspan=4)
 
     for label, serie in series:
         if not serie:
@@ -23,8 +24,11 @@ def get_canvas(series, title=''):
         top.plot_date(dates, values, '-', label=label)
 
     plt.title(title)
-    plt.legend()
-    return FigureCanvasAgg(plt.gcf())
+    plt.legend(loc='upper center', bbox_to_anchor=(0.5, -0.15),
+          fancybox=True, shadow=True, ncol=5)
+    fig = plt.gcf()
+    fig.autofmt_xdate()
+    return FigureCanvasAgg(fig)
 
 
 def moving_average(data, *ma, **kwargs):
