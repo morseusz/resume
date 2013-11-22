@@ -17,6 +17,8 @@ def get_canvas(series, title=''):
     top = plt.subplot2grid((4,4), (0, 0), rowspan=3, colspan=4)
 
     for label, serie in series:
+        if not serie:
+            continue
         dates, values = zip(*serie)
         top.plot_date(dates, values, '-', label=label)
 
