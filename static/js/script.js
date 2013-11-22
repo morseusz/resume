@@ -41,3 +41,16 @@ $(document).ready(function() {
 
 });
 
+function updatePlot(form){
+    url = '/charts/moving_average/gold?'
+    start = form.elements['start'].value
+    end = form.elements['end'].value
+    ma = '50,200'
+
+    $('#ma-plot').attr('src', url + 'start=' + start + '&end=' + end + '&ma=50,200');
+};
+
+$(function() {
+   $(".datepicker").datepicker();
+});
+

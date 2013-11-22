@@ -18,7 +18,7 @@ def display_moving_average(request, alias):
     end = request.GET.get('end')
     ma = request.GET.get('ma')
 
-    start, end = [datetime.strptime(x, '%Y-%m-%d') for x in start, end]
+    start, end = [datetime.strptime(x, '%m/%d/%Y') for x in start, end]
     ma = ma.split(',') if ',' in ma else ma
 
     data = model.objects.get_date_range(start, end)

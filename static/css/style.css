@@ -698,8 +698,9 @@ form label.error {
 form input[type="text"], form textarea {
 	border:1px solid #ccc;
 	padding:3px 10px;
-	margin:3px 4px;
-	width:342px;
+	margin:3px 20px;
+	width:100px;
+    border-radius: 5px;
 }
 form input[type="text"]:focus, form textarea:focus {
 	border:1px solid #D4414B;

@@ -24,10 +24,12 @@
 	<link rel="stylesheet" href="{% static "css/font.css" %}" type="text/css" charset="utf-8">
 
 	<script src="{% static "js/jquery-1.6.2.min.js" %}"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 	<script src="{% static "js/facebox.js" %}"></script>
 	<script src="{% static "js/jquery.poshytip.min.js" %}"></script>
 	<script src="{% static "js/jquery.validate.min.js" %}"></script>
 	<script src="{% static "js/script.js" %}"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
 </head>
 <body>
@@ -272,8 +274,23 @@
 							<span class="sub-title">See my latest work</span>
 						</div>
 						<div class="content">
-                            <p><a href="https://github.com/morseusz/resume" target="_blank">GitHub</a></p>
-                            <img src="/charts/moving_average/gold?start=1995-01-01&end=2012-01-01&ma=50,200"></img>
+                            <p>This gorgeous website, including Django app for dynamic MA plotting,
+                                can be found on <a href="https://github.com/morseusz/resume" target="_blank">GitHub</a>
+                            </p>
+                            <hr>
+                            <p>
+                                <form name="plot" method="GET">
+                                    <p>
+                                    Please input date range for MA plotting<br>
+                                    Start:<input type="text" name="start" class="datepicker">
+                                    End:<input type="text" name="end" class="datepicker">
+                                    <input type="button" name="button" value="Plot" onclick="updatePlot(this.form)">
+                                    </p>
+                                </form>
+                            </p>
+                            <p>
+                                <img id="ma-plot" align="left" src="/charts/moving_average/gold?start=01/01/1995&end=01/01/2012&ma=50,200" style="border-radius: 15px;">
+                            </p>
 						</div>
 					</div>
 				</div>
