@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.http import HttpResponse
 from lib.statistics.average import moving_average
 from app.charts.models import get_model
@@ -19,9 +19,10 @@ def display_moving_average(request, alias):
     ma = request.GET.get('ma')
 
     start, end = [datetime.strptime(x, '%m/%d/%Y') for x in start, end]
-    ma = ma.split(',') if ',' in ma else ma
+    ma = ma.split(',') if ',' in ma else (ma,)
+    ma = [int(x) for x in ma]
 
-    data = model.objects.get_date_range(start, end)
+    data = model.objects.get_date_range(start - timedelta(days=max(ma)), end)
     canvas = lib.plot.time.moving_average(data, *ma, asset_name=alias)
 
     response=HttpResponse(content_type='image/png')

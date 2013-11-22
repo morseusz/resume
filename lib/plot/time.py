@@ -41,9 +41,12 @@ def moving_average(data, *ma, **kwargs):
     """
     data = [(x.date, float(x.average_price)) for x in data]
     series = [('Daily avg', data)]
-    ma = [int(x) for x in ma]
+    ma = sorted([int(x) for x in ma])
     for window in ma:
         series.append(('MA %s'%window,
                       lib.statistics.average.moving_average(data, window)))
+    shortest = len(series[-1][1])
+    print shortest
+    series = [(x, y[-shortest:]) for x, y in series]
     return get_canvas(series,
                       title='Daily and MA: %s'%kwargs.get('asset_name'))
